@@ -1,4 +1,4 @@
-name: Update games.json
+name: Auto Update Games.json
 
 on:
   push:
