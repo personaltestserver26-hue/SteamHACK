@@ -1,0 +1,39 @@
+name: Auto Update games.json
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Generate games.json
+      run: |
+        echo "Generating games.json..."
+        FOLDERS=$(find . -maxdepth 1 -type d -printf "%f\n" | sort | grep -E '^[0-9]+$')
+        
+        echo "{ \"games\": [" > games.json
+        FIRST=1
+        for F in $FOLDERS; do
+          if [ $FIRST -eq 0 ]; then
+            echo "," >> games.json
+          fi
+          echo "  \"$F\"" >> games.json
+          FIRST=0
+        done
+        echo "] }" >> games.json
+
+    - name: Commit & push changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add games.json
+        git commit -m "Auto-update games.json" || echo "No changes to commit"
+        git push
