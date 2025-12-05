@@ -5,8 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'mods/**' 
-      - '.github/workflows/update_metadata.yml'
+      # Trigger only when files change in the main directory (assuming AppID folders are here)
+      - '[0-9]*/' 
+      - 'scripts/generate_json.py'
 
 jobs:
   update-json:
@@ -21,29 +22,13 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Dependencies
-        run: pip install requests 
-
       - name: Run Metadata Generator Script
+        # This assumes your script is placed in a 'scripts' folder
         run: python scripts/generate_json.py
         
       - name: Commit and Push Changes
+        # This action handles the commit and push, resolving race conditions.
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "CI: Auto-generated game metadata (games.json)"
-          files: games.json
-      - name: Git Pull and Rebase Remote Changes
-        run: |
-          # Configure Git user details
-          git config user.name "github-actions"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Pull the latest changes from the remote branch, then rebase local changes on top
-          git pull --rebase origin main
-          
-          # Now, stage the file and commit the new change on top of the remote history
-          git add games.json
-          git commit -m "Auto-update games.json" 
-          
-      - name: Final Push
-        run: git push
+          files: games.json # Only commit the metadata file
