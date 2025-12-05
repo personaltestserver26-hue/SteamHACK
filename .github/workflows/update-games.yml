@@ -1,34 +1,39 @@
-name: Auto Update Game Metadata
+name: Auto Update Games.json
 
 on:
   push:
     branches:
       - main
-    paths:
-      # Trigger only when files change in the main directory (assuming AppID folders are here)
-      - '[0-9]*/' 
-      - 'scripts/generate_json.py'
+  workflow_dispatch:
 
 jobs:
-  update-json:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
+    - name: Generate games.json (BOM-safe)
+      run: |
+        python3 << 'EOF'
+        import os, json
 
-      - name: Run Metadata Generator Script
-        # This assumes your script is placed in a 'scripts' folder
-        run: python scripts/generate_json.py
-        
-      - name: Commit and Push Changes
-        # This action handles the commit and push, resolving race conditions.
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "CI: Auto-generated game metadata (games.json)"
-          files: games.json # Only commit the metadata file
+        folders = []
+        for f in os.listdir("."):
+            if os.path.isdir(f) and f.isdigit():
+                folders.append(f)
+
+        folders.sort()
+
+        with open("games.json", "w", encoding="utf-8") as fp:
+            fp.write(json.dumps({"games": folders}, indent=2))
+        EOF
+
+    - name: Commit & push changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add games.json
+        git commit -m "Auto-update games.json" || echo "No changes"
+        git push
