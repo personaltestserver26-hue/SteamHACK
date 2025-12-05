@@ -5,7 +5,6 @@ on:
     branches:
       - main
     paths:
-      # Trigger only when files change in the mods folder, or the script itself changes
       - 'mods/**' 
       - '.github/workflows/update_metadata.yml'
 
@@ -16,8 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        # Note: If pushing back to the repo, you might need a token with write permissions, 
-        # but GITHUB_TOKEN often suffices for content updates.
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -25,15 +22,28 @@ jobs:
           python-version: '3.x'
 
       - name: Install Dependencies
-        run: pip install requests # Use if your script needs external libs like requests
+        run: pip install requests 
 
       - name: Run Metadata Generator Script
-        # You would put your custom logic here, e.g., in a file named 'scripts/generate_json.py'
         run: python scripts/generate_json.py
         
       - name: Commit and Push Changes
-        # This uses the built-in GITHUB_TOKEN to push the updated games.json
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "CI: Auto-generated game metadata (games.json)"
-          files: games.json # Only commit the metadata file
+          files: games.json
+      - name: Git Pull and Rebase Remote Changes
+        run: |
+          # Configure Git user details
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Pull the latest changes from the remote branch, then rebase local changes on top
+          git pull --rebase origin main
+          
+          # Now, stage the file and commit the new change on top of the remote history
+          git add games.json
+          git commit -m "Auto-update games.json" 
+          
+      - name: Final Push
+        run: git push
