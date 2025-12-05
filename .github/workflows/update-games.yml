@@ -1,39 +1,39 @@
-name: Auto Update Games.json
+name: Auto Update Game Metadata
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
+    paths:
+      # Trigger only when files change in the mods folder, or the script itself changes
+      - 'mods/**' 
+      - '.github/workflows/update_metadata.yml'
 
 jobs:
-  build:
+  update-json:
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # Note: If pushing back to the repo, you might need a token with write permissions, 
+        # but GITHUB_TOKEN often suffices for content updates.
 
-    - name: Generate games.json (BOM-safe)
-      run: |
-        python3 << 'EOF'
-        import os, json
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-        folders = []
-        for f in os.listdir("."):
-            if os.path.isdir(f) and f.isdigit():
-                folders.append(f)
+      - name: Install Dependencies
+        run: pip install requests # Use if your script needs external libs like requests
 
-        folders.sort()
-
-        with open("games.json", "w", encoding="utf-8") as fp:
-            fp.write(json.dumps({"games": folders}, indent=2))
-        EOF
-
-    - name: Commit & push changes
-      run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
-        git add games.json
-        git commit -m "Auto-update games.json" || echo "No changes"
-        git push
+      - name: Run Metadata Generator Script
+        # You would put your custom logic here, e.g., in a file named 'scripts/generate_json.py'
+        run: python scripts/generate_json.py
+        
+      - name: Commit and Push Changes
+        # This uses the built-in GITHUB_TOKEN to push the updated games.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "CI: Auto-generated game metadata (games.json)"
+          files: games.json # Only commit the metadata file
