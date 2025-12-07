@@ -14,20 +14,68 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Generate games.json (BOM-safe)
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Generate games.json (Fetch Steam Data)
       run: |
         python3 << 'EOF'
-        import os, json
+        import os
+        import json
+        import requests
+        import time
 
-        folders = []
-        for f in os.listdir("."):
-            if os.path.isdir(f) and f.isdigit():
-                folders.append(f)
+        output_data = {}
 
-        folders.sort()
+        # 1. Find all folders that are digits (App IDs)
+        app_ids = [f for f in os.listdir(".") if os.path.isdir(f) and f.isdigit()]
+        app_ids.sort()
 
+        print(f"Found {len(app_ids)} games to process.")
+
+        # 2. Loop through each App ID and fetch data
+        for app_id in app_ids:
+            game_name = "Unknown Game"
+            tier = "free" # Default tier logic
+            
+            try:
+                print(f"Fetching data for App ID: {app_id}...")
+                url = f"https://store.steampowered.com/api/appdetails?appids={app_id}"
+                response = requests.get(url)
+                data = response.json()
+
+                # Check if Steam returned valid data
+                if data and str(app_id) in data and data[str(app_id)]['success']:
+                    game_data = data[str(app_id)]['data']
+                    game_name = game_data['name']
+                    
+                    # LOGIC FOR TIER:
+                    # Currently defaults to 'free'. You can add custom logic here.
+                    # Example: if game_name == "Cyberpunk 2077": tier = "premium"
+                    # Or check for a specific file inside the folder.
+                    
+            except Exception as e:
+                print(f"Error fetching {app_id}: {e}")
+
+            # 3. Add to dictionary
+            output_data[app_id] = {
+                "name": game_name,
+                "tier": tier
+            }
+            
+            # Sleep briefly to avoid Steam API rate limits
+            time.sleep(0.5)
+
+        # 4. Save to JSON
         with open("games.json", "w", encoding="utf-8") as fp:
-            fp.write(json.dumps({"games": folders}, indent=2))
+            json.dump(output_data, fp, indent=2, ensure_ascii=False)
+        
+        print("games.json updated successfully.")
         EOF
 
     - name: Commit & push changes
@@ -35,5 +83,5 @@ jobs:
         git config user.name "github-actions"
         git config user.email "github-actions@github.com"
         git add games.json
-        git commit -m "Auto-update games.json" || echo "No changes"
+        git commit -m "Auto-update games.json with Steam names" || echo "No changes"
         git push
