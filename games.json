@@ -1,7 +1,7 @@
 {
   "1030300": {
     "name": "Hollow Knight: Silksong",
-    "tier": "free"
+    "tier": "premium"
   },
   "105600": {
     "name": "Terraria",
@@ -29,7 +29,7 @@
   },
   "1158160": {
     "name": "Coral Island",
-    "tier": "free"
+    "tier": "premium"
   },
   "1174180": {
     "name": "Red Dead Redemption 2",
@@ -37,7 +37,7 @@
   },
   "1196590": {
     "name": "Resident Evil Village",
-    "tier": "free"
+    "tier": "premium"
   },
   "12210": {
     "name": "Grand Theft Auto IV: The Complete Edition",
@@ -45,7 +45,7 @@
   },
   "1222140": {
     "name": "Detroit: Become Human",
-    "tier": "free"
+    "tier": "premium"
   },
   "1245620": {
     "name": "ELDEN RING",
@@ -81,7 +81,7 @@
   },
   "1620730": {
     "name": "Hell is Us",
-    "tier": "free"
+    "tier": "premium"
   },
   "1623730": {
     "name": "Palworld",
@@ -89,11 +89,11 @@
   },
   "1649240": {
     "name": "Returnal™",
-    "tier": "free"
+    "tier": "premium"
   },
   "1659420": {
     "name": "UNCHARTED™: Legacy of Thieves Collection",
-    "tier": "free"
+    "tier": "premium"
   },
   "1672970": {
     "name": "Minecraft Dungeons",
@@ -101,23 +101,23 @@
   },
   "1771300": {
     "name": "Kingdom Come: Deliverance II",
-    "tier": "free"
+    "tier": "premium"
   },
   "1817070": {
     "name": "Marvel’s Spider-Man Remastered",
-    "tier": "free"
+    "tier": "premium"
   },
   "1817190": {
     "name": "Marvel’s Spider-Man: Miles Morales",
-    "tier": "free"
+    "tier": "premium"
   },
   "1850570": {
     "name": "DEATH STRANDING DIRECTOR'S CUT",
-    "tier": "free"
+    "tier": "premkium"
   },
   "1888930": {
     "name": "The Last of Us™ Part I",
-    "tier": "free"
+    "tier": "premium"
   },
   "20": {
     "name": "Team Fortress Classic",
@@ -125,7 +125,7 @@
   },
   "200260": {
     "name": "Batman: Arkham City - Game of the Year Edition",
-    "tier": "free"
+    "tier": "premium"
   },
   "203160": {
     "name": "Tomb Raider",
@@ -137,7 +137,7 @@
   },
   "2138710": {
     "name": "Sifu",
-    "tier": "free"
+    "tier": "premium"
   },
   "214490": {
     "name": "Alien: Isolation",
@@ -149,7 +149,7 @@
   },
   "2215430": {
     "name": "Ghost of Tsushima DIRECTOR'S CUT",
-    "tier": "free"
+    "tier": "premium"
   },
   "2225070": {
     "name": "Trackmania",
@@ -165,11 +165,11 @@
   },
   "2322010": {
     "name": "God of War Ragnarök",
-    "tier": "free"
+    "tier": "premium"
   },
   "2350790": {
     "name": "Moonlighter 2: The Endless Vault",
-    "tier": "free"
+    "tier": "premium"
   },
   "238320": {
     "name": "Outlast",
@@ -177,7 +177,7 @@
   },
   "2417610": {
     "name": "METAL GEAR SOLID Δ: SNAKE EATER",
-    "tier": "free"
+    "tier": "premium"
   },
   "241930": {
     "name": "Middle-earth™: Shadow of Mordor™",
@@ -185,7 +185,7 @@
   },
   "2420110": {
     "name": "Horizon Forbidden West™ Complete Edition",
-    "tier": "free"
+    "tier": "premium"
   },
   "2428810": {
     "name": "LEGO® Horizon Adventures™",
@@ -193,23 +193,23 @@
   },
   "2440510": {
     "name": "Forza Motorsport",
-    "tier": "free"
+    "tier": "premium"
   },
   "244210": {
     "name": "Assetto Corsa",
-    "tier": "free"
+    "tier": "premium"
   },
   "250900": {
     "name": "The Binding of Isaac: Rebirth",
-    "tier": "premium"
+    "tier": "free"
   },
   "2531310": {
     "name": "The Last of Us™ Part II Remastered",
-    "tier": "free"
+    "tier": "premium"
   },
   "2561580": {
     "name": "Horizon Zero Dawn™ Remastered",
-    "tier": "free"
+    "tier": "premium"
   },
   "264710": {
     "name": "Subnautica",
@@ -217,7 +217,7 @@
   },
   "2651280": {
     "name": "Marvel's Spider-Man 2",
-    "tier": "free"
+    "tier": "premium"
   },
   "2668510": {
     "name": "Red Dead Redemption",
@@ -229,7 +229,7 @@
   },
   "284160": {
     "name": "BeamNG.drive",
-    "tier": "free"
+    "tier": "premkium"
   },
   "285900": {
     "name": "Gang Beasts",
@@ -237,15 +237,15 @@
   },
   "2909400": {
     "name": "FINAL FANTASY VII REBIRTH",
-    "tier": "free"
+    "tier": "premium"
   },
   "292030": {
     "name": "The Witcher 3: Wild Hunt",
-    "tier": "free"
+    "tier": "premium"
   },
   "2947440": {
     "name": "SILENT HILL f",
-    "tier": "free"
+    "tier": "premium"
   },
   "307690": {
     "name": "Sleeping Dogs: Definitive Edition",
@@ -253,7 +253,7 @@
   },
   "3240220": {
     "name": "Grand Theft Auto V Enhanced",
-    "tier": "free"
+    "tier": "premium"
   },
   "3405340": {
     "name": "Megabonk",
@@ -261,7 +261,7 @@
   },
   "3472040": {
     "name": "NBA 2K26",
-    "tier": "free"
+    "tier": "premium"
   },
   "3527290": {
     "name": "PEAK",
@@ -273,11 +273,11 @@
   },
   "374320": {
     "name": "DARK SOULS™ III",
-    "tier": "free"
+    "tier": "premium"
   },
   "377160": {
     "name": "Fallout 4",
-    "tier": "free"
+    "tier": "premium"
   },
   "379430": {
     "name": "Kingdom Come: Deliverance",
@@ -293,7 +293,7 @@
   },
   "391220": {
     "name": "Rise of the Tomb Raider™",
-    "tier": "free"
+    "tier": "premium"
   },
   "413150": {
     "name": "Stardew Valley",
@@ -301,7 +301,7 @@
   },
   "414700": {
     "name": "Outlast 2",
-    "tier": "free"
+    "tier": "premium"
   },
   "421020": {
     "name": "DiRT 4",
@@ -317,19 +317,19 @@
   },
   "489830": {
     "name": "The Elder Scrolls V: Skyrim Special Edition",
-    "tier": "free"
+    "tier": "premium"
   },
   "504230": {
     "name": "Celeste",
-    "tier": "premium"
+    "tier": "free"
   },
   "524220": {
     "name": "NieR:Automata™",
-    "tier": "free"
+    "tier": "premium"
   },
   "582010": {
     "name": "Monster Hunter: World",
-    "tier": "free"
+    "tier": "premium"
   },
   "599140": {
     "name": "Graveyard Keeper",
@@ -337,7 +337,7 @@
   },
   "638970": {
     "name": "Yakuza 0",
-    "tier": "free"
+    "tier": "premium"
   },
   "646570": {
     "name": "Slay the Spire",
@@ -361,7 +361,7 @@
   },
   "782330": {
     "name": "DOOM Eternal",
-    "tier": "free"
+    "tier": "premium"
   },
   "7950": {
     "name": "Unknown Game",
@@ -369,34 +369,34 @@
   },
   "805550": {
     "name": "Assetto Corsa Competizione",
-    "tier": "free"
+    "tier": "premium"
   },
   "814380": {
     "name": "Sekiro™: Shadows Die Twice - GOTY Edition",
-    "tier": "free"
+    "tier": "premium"
   },
   "834530": {
     "name": "Yakuza Kiwami",
-    "tier": "free"
+    "tier": "premium"
   },
   "883710": {
     "name": "Resident Evil 2",
-    "tier": "free"
+    "tier": "premium"
   },
   "927380": {
     "name": "Yakuza Kiwami 2",
-    "tier": "free"
+    "tier": "premium"
   },
   "952060": {
     "name": "Resident Evil 3",
-    "tier": "free"
+    "tier": "premkium"
   },
   "960990": {
     "name": "Beyond: Two Souls",
-    "tier": "free"
+    "tier": "premium"
   },
   "993090": {
     "name": "Lossless Scaling",
-    "tier": "free"
+    "tier": "premium"
   }
 }
