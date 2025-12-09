@@ -363,10 +363,6 @@
     "name": "DOOM Eternal",
     "tier": "premium"
   },
-  "7950": {
-    "name": "Unknown Game",
-    "tier": "free"
-  },
   "805550": {
     "name": "Assetto Corsa Competizione",
     "tier": "premium"
@@ -389,7 +385,7 @@
   },
   "952060": {
     "name": "Resident Evil 3",
-    "tier": "premkium"
+    "tier": "premium"
   },
   "960990": {
     "name": "Beyond: Two Souls",
